@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  clientd:
+    build: .
+    command: ["python", "-u", "./clientd.py"]
+    environment:
+      SERVER_CONNECT_URI: tcp://serverd:5557
+    networks:
+      mynet:
+
+networks:
+  mynet:
+    external: True

@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  serverd:
+    build: .
+    command: ["python", "-u", "./serverd.py"]
+    environment:
+      SERVER_LISTEN_URI: tcp://0.0.0.0:5557
+    networks:
+      mynet:
+        aliases:
+          - serverd
+
+networks:
+  mynet:
+    external: True
