@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  serverd:
+    build: serverd
+    command: ["python", "-u", "./serverd.py"]
+    environment:
+      SERVER_LISTEN_URI: tcp://0.0.0.0:5557
+
+  clientd:
+    build: clientd
+    command: ["python", "-u", "./clientd.py"]
+    environment:
+      SERVER_CONNECT_URI: tcp://serverd:5557
